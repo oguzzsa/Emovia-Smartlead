@@ -1,6 +1,6 @@
 import { fetch } from 'wix-fetch';
 
-const API_BASE_URL = 'https://YOUR-EMOVIA-API.onrender.com';
+const API_BASE_URL = '';
 const REQUEST_TIMEOUT_MS = 15000;
 const MIN_NAME_LENGTH = 2;
 const MIN_PHONE_DIGITS = 10;
