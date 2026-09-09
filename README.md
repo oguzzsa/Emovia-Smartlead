@@ -33,7 +33,6 @@ smartlead_ai/
 ├── run.py
 ├── config.py
 ├── requirements.txt
-├── .env                 # Git'e gönderilmez
 ├── .gitignore
 ├── README.md
 ├── emovia.db            # Git'e gönderilmez, uygulama çalışınca oluşur
@@ -84,7 +83,7 @@ python -m pip install -r requirements.txt
 
 ## Ortam Değişkenleri
 
-`.env` dosyası proje kökünde bulunur ve GitHub'a gönderilmez. Gerçek API anahtarını yalnızca bu dosyaya veya Render Environment Variables alanına yazın.
+Ortam değişkenleri yerelde tanımlanır ve GitHub'a gönderilmez. Gerçek API anahtarını yalnızca yerel ortamınıza veya Render Environment Variables alanına yazın.
 
 ```env
 SECRET_KEY=guclu-ve-gizli-bir-deger
