@@ -7,7 +7,7 @@ const API_BASE_URL = 'https://emovia-smartlead.onrender.com';
 const CHAT_STORAGE_KEY = 'emovia-chat-history-v1';
 const MAX_MESSAGE_LENGTH = 600;
 const MAX_HISTORY_ITEMS = 6;
-const REQUEST_TIMEOUT_MS = 20000;
+const REQUEST_TIMEOUT_MS = 60000;
 
 const DEFAULT_STATUS = 'Nasıl yardımcı olabilirim?';
 const THINKING_STATUS = 'Emovia düşünüyor...';
