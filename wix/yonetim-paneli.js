@@ -1,6 +1,6 @@
 import { fetch } from 'wix-fetch';
 
-const API_BASE_URL = '';
+const API_BASE_URL = 'https://emovia-smartlead.onrender.com';
 const REQUEST_TIMEOUT_MS = 15000;
 const REFRESH_INTERVAL_MS = 60000;
 

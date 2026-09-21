@@ -25,7 +25,7 @@ class AIService:
         messages.extend(gecmis or [])
         messages.append({"role": "user", "content": mesaj})
         payload = {
-            "model": "llama-3.1-8b-instant",
+            "model": Config.GROQ_MODEL,
             "messages": messages,
             "temperature": 0.7,
             "max_tokens": 350,
