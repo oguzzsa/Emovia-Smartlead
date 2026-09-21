@@ -1,9 +1,12 @@
 import json
+import logging
 from typing import Any, Dict, List
 
 import requests
 
 from config import Config
+
+logger = logging.getLogger(__name__)
 
 
 class AIServiceError(Exception):
@@ -43,6 +46,13 @@ class AIService:
             result = response.json()
             return result["choices"][0]["message"]["content"].strip()
         except (requests.RequestException, KeyError, IndexError, ValueError) as exc:
+            status_code = getattr(getattr(exc, "response", None), "status_code", None)
+            logger.error(
+                "Groq request failed: status=%s model=%s key_configured=%s",
+                status_code,
+                Config.GROQ_MODEL,
+                bool(Config.GROQ_API_KEY),
+            )
             raise AIServiceError("AI sağlayıcısından yanıt alınamadı.") from exc
 
 
