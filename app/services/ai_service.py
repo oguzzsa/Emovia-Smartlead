@@ -31,8 +31,12 @@ class AIService:
             "model": Config.GROQ_MODEL,
             "messages": messages,
             "temperature": 0.7,
-            "max_tokens": 350,
         }
+        if Config.GROQ_MODEL.startswith("openai/gpt-oss-"):
+            payload["max_completion_tokens"] = 2048
+            payload["reasoning_effort"] = "medium"
+        else:
+            payload["max_tokens"] = 350
         headers = {"Authorization": f"Bearer {Config.GROQ_API_KEY}", "Content-Type": "application/json"}
 
         try:
