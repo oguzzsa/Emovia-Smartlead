@@ -72,7 +72,12 @@ def api_sohbet():
 
     try:
         answer = ai_service.yanit_uret(user_message, data.get("gecmis") or [])
-        return jsonify({"basari": True, "status": "success", "cevap": answer})
+        return jsonify({
+            "basari": True,
+            "status": "success",
+            "cevap": answer,
+            "reply": answer,
+        })
     except AIServiceError as exc:
         return jsonify({"basari": False, "status": "error", "cevap": str(exc)}), 503
 
