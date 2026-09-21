@@ -2,7 +2,7 @@ import { fetch } from 'wix-fetch';
 import { local } from 'wix-storage';
 
 
-const API_BASE_URL = '';
+const API_BASE_URL = 'https://emovia-smartlead.onrender.com';
 
 const CHAT_STORAGE_KEY = 'emovia-chat-history-v1';
 const MAX_MESSAGE_LENGTH = 600;

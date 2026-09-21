@@ -12,6 +12,39 @@ def home():
     return render_template("index.html")
 
 
+@pages_bp.route("/", methods=["POST", "OPTIONS"])
+def wix_chat():
+    if request.method == "OPTIONS":
+        return "", 200
+
+    data = request.get_json(silent=True) or {}
+    user_message = str(data.get("message") or data.get("mesaj") or "").strip()
+
+    if not user_message:
+        return jsonify({
+            "basari": False,
+            "status": "error",
+            "error": "Mesaj alanı boş olamaz.",
+            "cevap": "Mesaj alanı boş olamaz.",
+        }), 400
+
+    try:
+        answer = ai_service.yanit_uret(user_message, data.get("history") or data.get("gecmis") or [])
+        return jsonify({
+            "basari": True,
+            "status": "success",
+            "reply": answer,
+            "cevap": answer,
+        })
+    except AIServiceError as exc:
+        return jsonify({
+            "basari": False,
+            "status": "error",
+            "error": str(exc),
+            "cevap": str(exc),
+        }), 503
+
+
 def _health_response():
     return jsonify({"basari": True, "status": "ok", "service": "EMOVIA", "message": "API is running."})
 
